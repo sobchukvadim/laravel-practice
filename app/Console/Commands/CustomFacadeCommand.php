@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Facades\Parser;
+use Illuminate\Console\Command;
 
 class CustomFacadeCommand extends Command
 {
