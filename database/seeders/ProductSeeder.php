@@ -17,7 +17,18 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::factory()->count(1000000)
-            ->create();
+        $step = 1;
+        $count = 10;
+
+        while ($step <= 10000) {
+            Product::factory()->count($count)
+                ->create();
+
+            $allCount = Product::query()->count();
+
+            echo sprintf("Step %s +%s - %s%s", $step, $count, $allCount, PHP_EOL);
+
+            $step++;
+        }
     }
 }
