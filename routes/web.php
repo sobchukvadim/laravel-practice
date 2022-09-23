@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['visit.log'])->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 });
