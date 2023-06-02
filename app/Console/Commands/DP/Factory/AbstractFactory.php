@@ -13,7 +13,7 @@ class AbstractFactory extends Command
      *
      * @var string
      */
-    protected $signature = 'dp:factory-abstract';
+    protected $signature = 'dp:factory-abstract {gui_kit}';
 
     /**
      * The console command description.
@@ -23,15 +23,9 @@ class AbstractFactory extends Command
     protected $description = 'Command description';
 
     /**
-     * @var GuiFactoryInterface
+     * @var GuiFactoryInterface|null
      */
-    private GuiFactoryInterface $guiKit;
-
-    public function __construct()
-    {
-        $this->guiKit = (new GuiKitFactory())->getFactory('bootstrap');
-        parent::__construct();
-    }
+    private ?GuiFactoryInterface $guiKit = null;
 
     /**
      * Execute the console command.
@@ -40,11 +34,23 @@ class AbstractFactory extends Command
      */
     public function handle(): int
     {
+        $this->setGuiKit();
+
         $result[] = $this->guiKit->buildButton();
         $result[] = $this->guiKit->buildCheckbox();
 
         dump($result);
 
         return self::SUCCESS;
+    }
+
+    /**
+     * @return void
+     */
+    protected function setGuiKit(): void
+    {
+        if (!$this->guiKit) {
+            $this->guiKit = (new GuiKitFactory())->getFactory($this->argument('gui_kit'));
+        }
     }
 }

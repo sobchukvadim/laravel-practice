@@ -2,9 +2,18 @@
 
 namespace App\DesignPatterns\Factories\AbstractFactory\Interfaces;
 
+use App\DesignPatterns\Factories\AbstractFactory\Elements\ButtonInterface;
+use App\DesignPatterns\Factories\AbstractFactory\Elements\CheckboxInterface;
+
 interface GuiFactoryInterface
 {
-    public function buildButton();
+    /**
+     * @return ButtonInterface
+     */
+    public function buildButton(): ButtonInterface;
 
-    public function buildCheckbox();
+    /**
+     * @return CheckboxInterface
+     */
+    public function buildCheckbox(): CheckboxInterface;
 }

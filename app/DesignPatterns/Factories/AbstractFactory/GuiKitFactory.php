@@ -2,7 +2,9 @@
 
 namespace App\DesignPatterns\Factories\AbstractFactory;
 
+use App\DesignPatterns\Factories\AbstractFactory\Enums\GuiKit;
 use App\DesignPatterns\Factories\AbstractFactory\Factories\BootstrapFactory;
+use App\DesignPatterns\Factories\AbstractFactory\Factories\SemanticUiFactory;
 use App\DesignPatterns\Factories\AbstractFactory\Interfaces\GuiFactoryInterface;
 use InvalidArgumentException;
 
@@ -16,7 +18,8 @@ class GuiKitFactory
     public function getFactory(string $type): GuiFactoryInterface
     {
         return match ($type) {
-            'bootstrap' => new BootstrapFactory(),
+            GuiKit::BOOTSTRAP->value => new BootstrapFactory(),
+            GuiKit::SEMANTIC_UI->value => new SemanticUiFactory(),
             default => throw new InvalidArgumentException("Unknown type - [{$type}]"),
         };
     }
