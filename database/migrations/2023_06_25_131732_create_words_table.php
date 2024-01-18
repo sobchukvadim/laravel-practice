@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('translation');
             $table->string('example')->nullable();
             $table->boolean('is_important')->nullable()->default(false);
+            $table->unsignedSmallInteger('step')->nullable(false)->default(0);
         });
     }
 

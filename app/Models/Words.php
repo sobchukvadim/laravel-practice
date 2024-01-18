@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $translation
  * @property string $example
  * @property boolean $is_important
+ * @property int $step
  */
 class Words extends Model
 {
