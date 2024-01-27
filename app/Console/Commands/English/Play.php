@@ -61,7 +61,7 @@ class Play extends Command
      * @param int $step
      * @return Words|null
      */
-    protected function getRandomRecord(bool $onlyImportant = false, int $step = 0): ?Words
+    protected function getRandomRecord(bool $onlyImportant = false, int|null $step = 0): ?Words
     {
         $query = Words::inRandomOrder();
 
