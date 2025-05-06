@@ -24,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind('parser', 'App\Services\Parser');
+        // Documents
+        $this->app->singleton('documents', 'App\Services\Documents\Document');
     }
 }
